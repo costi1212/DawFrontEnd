@@ -5,7 +5,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { SigninComponent } from './components/signin/signin.component';
+import { LoginComponent } from './components/signin/signin.component';
 import { RegisterComponent } from './components/register/register.component';
 //import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent,
+    LoginComponent,
     RegisterComponent
   ],
   imports: [
