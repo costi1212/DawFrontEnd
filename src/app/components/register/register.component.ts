@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth-service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Component({
-  selector: 'app-register',
+  selector: 'register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.sass']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit{
+  AUTH_API = 'https://localhost:7044/Users';
+  httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
   form: any = {
     username: null,
     email: null,
@@ -14,12 +20,21 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-  constructor(private authService: AuthService) { }
-  ngOnInit(): void {
+  constructor(private http:HttpClient){}
+  async ngOnInit(){
   }
+
+  register(username: string, email: string, password: string): Observable<any> {
+    return this.http.post(this.AUTH_API, {
+      username,
+      email,
+      password
+    }, this.httpOptions);
+  }
+
   onSubmit(): void {
     const { username, email, password } = this.form;
-    this.authService.register(username, email, password).subscribe(
+    this.register(username, email, password).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;

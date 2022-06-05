@@ -9,12 +9,15 @@ import { LoginComponent } from './components/signin/signin.component';
 import { RegisterComponent } from './components/register/register.component';
 //import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './services/auth-service';
+import { authInterceptorProviders } from './helper/auth-interceptor';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     AngularMaterialModule,
@@ -22,9 +25,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-     ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService,
+              authInterceptorProviders],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
