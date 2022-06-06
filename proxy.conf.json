@@ -1,0 +1,7 @@
+{
+    "/Users/*": {
+      "target": "https://localhost:7044",
+      "secure": true,
+      "changePrigin": true
+    }
+  }

@@ -1,17 +1,11 @@
 <div class="col-md-12">
   <div class="card card-container">
-    <img
-      id="profile-img"
-      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-      class="profile-img-card"
-    />
     <form
       *ngIf="!isSuccessful"
       name="form"
       (ngSubmit)="f.form.valid && onSubmit()"
       #f="ngForm"
-      novalidate
-    >
+      novalidate>
       <div class="form-group">
         <label for="username">Username</label>
         <input
@@ -53,6 +47,39 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="fname">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="fname"
+          [(ngModel)]="form.fname"
+          required
+          #password="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.lname"
+          required
+          #password="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="role">Role</label>
+        <input
+          type="number"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.role"
+          required
+          #password="ngModel"
+        />
+      </div>
+      <div class="form-group">
         <label for="password">Password</label>
         <input
           type="password"
@@ -82,6 +109,3 @@
     </div>
   </div>
 </div>
-<p>
-  register
-</p>

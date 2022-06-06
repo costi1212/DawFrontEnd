@@ -15,6 +15,9 @@ export class RegisterComponent implements OnInit{
   form: any = {
     username: null,
     email: null,
+    fname:null,
+    lname:null,
+    role:null,
     password: null
   };
   isSuccessful = false;
@@ -24,17 +27,20 @@ export class RegisterComponent implements OnInit{
   async ngOnInit(){
   }
 
-  register(username: string, email: string, password: string): Observable<any> {
+  register(Username: string, Email: string, Password: string, FirstName: string, LastName: string, Role: number): Observable<any> {
     return this.http.post(this.AUTH_API, {
-      username,
-      email,
-      password
+      FirstName: FirstName,
+      Username: Username,
+      Password: Password,
+      Email: Email,
+      Role: Role,
+      LastName: LastName
     }, this.httpOptions);
   }
 
   onSubmit(): void {
-    const { username, email, password } = this.form;
-    this.register(username, email, password).subscribe(
+    const { username, email, password, fname, lname, role } = this.form;
+    this.register(username, email, password, fname, lname, role).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
